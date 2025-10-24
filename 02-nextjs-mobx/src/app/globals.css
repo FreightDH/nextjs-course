@@ -6,6 +6,7 @@
   --secondary: #2c2c32;
 
   height: 100%;
+  scrollbar-gutter: stable;
 }
 
 @theme {
