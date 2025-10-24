@@ -1,13 +1,17 @@
 'use client';
 
+import { fetchPostsBySearch } from '@/utils/api/posts';
 import { FormEvent, useState, type FC, type ReactElement } from 'react';
-import { postStore } from '@/stores/post.store';
+import useSWR from 'swr';
 
 export const PostSearch: FC = (): ReactElement => {
   const [query, setQuery] = useState('');
+  const { mutate } = useSWR('posts');
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    postStore.getPostsBySearch(query);
+    const posts = fetchPostsBySearch(query);
+    mutate(posts);
   };
 
   return (
