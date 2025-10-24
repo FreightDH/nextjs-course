@@ -17,7 +17,7 @@ export const Navigation: FC<Props> = ({ navLinks }): ReactElement => {
     <nav aria-label="Основная навигация">
       <ul className="flex items-center justify-center gap-x-6" role="menubar">
         {navLinks.map((link) => {
-          const isActive = pathname === link.href;
+          const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
 
           return (
             <li key={link.label} role="none">
